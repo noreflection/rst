@@ -3,18 +3,36 @@
 use std::ops::Add;
 
 fn main() {
-    // let mut s = String::from("hello");
-    // s = takes_ownership(s);
-    // println!("this:{}", s);
-    //
-    // let x = 5;
-    // makes_copy(5);
-    // println!("here:{}", x)
-    let mut s1 = String::from("hello");
+    structs();
+}
 
-    let len= calculate_length(&mut s1);
-    //println!("{}", s2)
-    println!("The length of '{}' is {}.", s1, len);
+fn structs() {
+    #[derive(Debug)]
+    struct User {
+        username: String,
+        email: String,
+        sign_in_count: u64,
+        active: bool,
+    }
+
+    struct UserSmall {
+        username: String,
+    }
+
+    let small = UserSmall { username: "small".to_string() };
+
+    let user1 = User {
+        username: String::from("1"),
+        email: "".to_string(),
+        sign_in_count: 0,
+        active: false,
+    };
+
+    let tup1: (i32,String) = (1,"ss".to_string());
+    let mut tup2: (i32,String) = (1,"s11s".to_string());
+    tup2 = tup1;
+
+    println!("{:?}", user1);
 }
 
 fn calculate_length(s: &mut String) -> usize {
